@@ -1,9 +1,14 @@
-export function Logo() {
+type Size = {
+  width: number;
+  height: number;
+}
+
+export function Logo(props: Size) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="237"
-      height="34"
+      width={props.width}
+      height={props.height}
       fill="none"
       viewBox="0 0 237 34"
     >

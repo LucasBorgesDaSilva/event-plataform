@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        blur: 'url(./src/assets/fundo.png)',
+      },
       fontFamily: {
         sans: 'Roboto, sans-serif', // Falando que a fonte padrão é a Roboto, caso ele não encontre, ai san-serif será a padrão.
       },

@@ -61,6 +61,7 @@ export function Video(props: VideoProps) {
                 <div className="h-full w-full max-w-[1100px] max-h-[60vh] aspect-video">
                     <Player controls>
                         <Youtube videoId={data.lesson.videoId} />
+                        <DefaultUi />
                     </Player>
                 </div>
             </div> 
