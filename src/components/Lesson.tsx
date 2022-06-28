@@ -12,7 +12,7 @@ type LessonProps = {
 }
 
 export function Lesson(props: LessonProps) {
-    const { slug } = useParams<{slug: string}>()
+    const { slug } = useParams<{slug: string}>();
 
     const isLessonAvailable = isPast(props.availableAt);
     const availableDateFormatted = format(props.availableAt, "EEEE' • 'd ' de 'MMMM' • 'k'h'mm", {
@@ -22,14 +22,18 @@ export function Lesson(props: LessonProps) {
     const isActiveLesson = slug === props.slug;
 
     return (
-        <Link to={`/event/lesson/${props.slug}`} className='group'>
+        <Link to={`/event/lesson/${props.slug}`} className={classNames('group', {
+            'pointer-events-none': !isLessonAvailable,
+            'opacity-70' : !isLessonAvailable
+        })}>
             <span className='text-gray-300'>
                 {availableDateFormatted}
             </span>
 
-            <div 
-                className={classNames('mt-2 p-4 border border-gray-500 bg rounded group-hover:border-green-500 transition-colors', {
+            <div
+                className={classNames('mt-2 p-4 border border-gray-500 bg rounded', {
                     'bg-green-500' : isActiveLesson,
+                    'group-hover:border-green-500 transition-colors': isLessonAvailable,
                 })}
             >
                 <header className="flex items-center justify-between mb-5">
@@ -42,7 +46,7 @@ export function Lesson(props: LessonProps) {
                             Conteúdo liberado
                         </span>
                     ) : (
-                        <span className="text-sm text-orange-500 font-medium flex items-center gap-2">
+                        <span className="text-sm text-orange-500 flex items-center gap-2">
                             <Lock size={20} />
                             Em breve
                         </span>
